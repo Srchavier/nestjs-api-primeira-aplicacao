@@ -1,0 +1,14 @@
+GET  http://localhost:3000/transactions
+
+###
+Post http://localhost:3000/transactions
+Content-Type: application/json
+
+{
+  "payment_date": "2021-01-01",
+  "name": "Nova conta",
+  "description": "Descri~ao",
+  "category": "category1",
+  "amount": 30,
+  "type": "credit",
+}
