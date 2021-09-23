@@ -5,6 +5,12 @@ import { TransactionsModule } from './transactions/transactions.module';
 import { Transaction } from './transactions/entities/transaction.entity';
 import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { AccountsModule } from './accounts/accounts.module';
+import { Account } from './accounts/entities/account.entity';
+import { CommonModule } from './common/common.module';
+import { AuthModule } from './auth/auth.module';
+import { TenantModule } from './tenant/tenant.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -16,7 +22,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      models: [Transaction],
+      models: [Transaction, Account],
       autoLoadModels: true,
       synchronize: true,
       sync: {
@@ -28,9 +34,14 @@ import { SequelizeModule } from '@nestjs/sequelize';
         underscored: false,
       },
       // east eight area time
-      timezone: '+08:00',
+      timezone: '+04:00',
     }),
     TransactionsModule,
+    AccountsModule,
+    CommonModule,
+    AuthModule,
+    TenantModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
